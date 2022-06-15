@@ -3,12 +3,18 @@ seeds = false
 [programs.localnet]
 token_metadata = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 
+
+[programs.devnet]
+token_metadata = "DTdBgGUYz2Lov3W418Zz4XgKiM7nLGh1EFXJAk4T4epS"
+
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/home/jee/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+deploy-w-idl = "anchor build && anchor deploy && anchor idl upgrade --filepath target/idl/token_metadata.json DTdBgGUYz2Lov3W418Zz4XgKiM7nLGh1EFXJAk4T4epS"
+get-idl = "anchor idl fetch DTdBgGUYz2Lov3W418Zz4XgKiM7nLGh1EFXJAk4T4epS"
